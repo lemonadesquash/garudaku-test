@@ -18,7 +18,7 @@ const routes = [
       import(/* webpackChunkName: "detail" */ "../views/DetailView.vue"),
   },
   {
-    path: "/edit",
+    path: "/news/:id/edit",
     name: "edit",
     // route level code-splitting
     component: () =>
@@ -30,6 +30,14 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+  scrollBehavior(to, _, savedPosition) {
+    console.log(savedPosition);
+    if (savedPosition) {
+      return savedPosition;
+    }
+
+    return { x: 0, y: 0 };
+  },
 });
 
 export default router;

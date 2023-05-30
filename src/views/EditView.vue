@@ -1,19 +1,20 @@
 <template>
   <div class="container">
-    <h1>This is a edit page</h1>
+    <h1>Edit News</h1>
     <div>
-      <form>
-        <div>
-          <input type="text" placeholder="Image URL" />
-        </div>
-        <div>
-          <input type="text" placeholder="Title" />
-        </div>
-        <div>
-          <textarea placeholder="Content"></textarea>
+      <form :class="$style.Form">
+        <div :class="$style.TextInputs">
+          <input
+            :class="$style.TextInput"
+            type="text"
+            placeholder="Image URL"
+          />
+          <input :class="$style.TextInput" type="text" placeholder="Title" />
         </div>
 
-        <div>
+        <textarea :class="$style.TextArea" placeholder="Content"></textarea>
+
+        <div :class="$style.ActionButtons">
           <ActionButton label="Save" type="submit" />
           <ActionButton label="Cancel" type="button" @click="$router.go(-1)" />
         </div>
@@ -31,3 +32,28 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" module>
+.Form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.TextInputs {
+  display: flex;
+  gap: 0.75rem;
+}
+.TextInput,
+.TextArea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #333333;
+}
+.TextArea {
+  height: 10rem;
+}
+.ActionButtons {
+  display: flex;
+  gap: 0.75rem;
+}
+</style>

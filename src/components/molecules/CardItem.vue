@@ -35,7 +35,9 @@ export default {
   .Image {
     width: 100%;
     height: 300px;
+    background-size: cover;
     background-position: center center;
+    background-repeat: no-repeat;
   }
 
   .Content {
