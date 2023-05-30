@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <ActionButton label="Cancel" @click="$router.go(-1)" />
     <h1>This is a edit page</h1>
     <div>
       <form>
@@ -15,7 +14,8 @@
         </div>
 
         <div>
-          <ActionButton label="Save" />
+          <ActionButton label="Save" type="submit" />
+          <ActionButton label="Cancel" type="button" @click="$router.go(-1)" />
         </div>
       </form>
     </div>

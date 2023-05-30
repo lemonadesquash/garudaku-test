@@ -1,12 +1,12 @@
 <template>
-  <button :class="$style.ActionButton" @click="$emit('click')">
+  <button :type="type" :class="$style.ActionButton" @click="$emit('click')">
     {{ label }}
   </button>
 </template>
 
 <script>
 export default {
-  props: ["label"],
+  props: ["label", "type"],
 };
 </script>
 
