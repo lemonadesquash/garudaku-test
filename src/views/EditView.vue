@@ -2,17 +2,27 @@
   <div class="container">
     <h1>Edit News</h1>
     <div>
-      <form :class="$style.Form">
+      <form :class="$style.Form" @submit.prevent="handleFormSubmit">
         <div :class="$style.TextInputs">
           <input
+            v-model="urlToImage"
             :class="$style.TextInput"
             type="text"
             placeholder="Image URL"
           />
-          <input :class="$style.TextInput" type="text" placeholder="Title" />
+          <input
+            v-model="title"
+            :class="$style.TextInput"
+            type="text"
+            placeholder="Title"
+          />
         </div>
 
-        <textarea :class="$style.TextArea" placeholder="Content"></textarea>
+        <textarea
+          v-model="description"
+          :class="$style.TextArea"
+          placeholder="Content"
+        ></textarea>
 
         <div :class="$style.ActionButtons">
           <ActionButton label="Save" type="submit" />
@@ -25,8 +35,43 @@
 
 <script>
 import ActionButton from "@/components/atoms/ActionButton.vue";
+import { mapActions, mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      urlToImage: "",
+      title: "",
+      content: "",
+    };
+  },
+  computed: {
+    ...mapState(["newsDetail"]),
+  },
+  methods: {
+    ...mapActions(["fetchNewsById", "updateNews"]),
+    handleFormSubmit() {
+      this.updateNews({
+        id: this.$route.params.id,
+        urlToImage: this.urlToImage,
+        title: this.title,
+        description: this.description,
+      });
+      this.$router.go(-1);
+    },
+  },
+  created() {
+    this.fetchNewsById(this.$route.params.id);
+  },
+  watch: {
+    newsDetail(newValue) {
+      if (Object.prototype.hasOwnProperty.call(newValue, "id")) {
+        this.urlToImage = this.newsDetail.urlToImage;
+        this.title = this.newsDetail.title;
+        this.description = this.newsDetail.description;
+      }
+    },
+  },
   components: {
     ActionButton,
   },

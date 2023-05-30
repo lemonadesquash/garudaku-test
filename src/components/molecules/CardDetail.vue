@@ -2,20 +2,21 @@
   <div :class="$style.CardDetail">
     <div
       :class="$style.Image"
-      :style="`background-image: url(${'https://i.pinimg.com/736x/c2/2e/0d/c22e0d6839a83d3687eb40ed21749371.jpg'})`"
+      :style="`background-image: url(${item.urlToImage})`"
     ></div>
     <div :class="$style.Content">
       <div :class="$style.ActionButtons">
         <ActionButton label="Go Back" @click="$router.go(-1)" />
-        <ActionButton label="Edit" @click="$router.push(`/news/${1}/edit`)" />
+        <ActionButton
+          label="Edit"
+          @click="$router.push(`/news/${item.id}/edit`)"
+        />
       </div>
-      <h1>[title]</h1>
+      <h1>{{ item.title }}</h1>
       <p>
-        [content, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Soluta, vitae impedit voluptas cum repudiandae dicta ut at eum dolore
-        libero quisquam fugit et ducimus! Est ad labore cupiditate provident
-        inventore!]
+        {{ item.description }}
       </p>
+      <a :href="item.url" target="_blank">Read full news</a>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@
 import ActionButton from "@/components/atoms/ActionButton.vue";
 
 export default {
+  props: ["item"],
   components: {
     ActionButton,
   },

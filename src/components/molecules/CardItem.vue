@@ -2,17 +2,12 @@
   <div :class="$style.CardItem">
     <div
       :class="$style.Image"
-      :style="`background-image: url(${'https://i.pinimg.com/736x/c2/2e/0d/c22e0d6839a83d3687eb40ed21749371.jpg'})`"
+      :style="`background-image: url(${item.urlToImage})`"
     ></div>
     <div :class="$style.Content">
-      <h1>[title]</h1>
-      <p>
-        [description, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Soluta, vitae impedit voluptas cum repudiandae dicta ut at eum dolore
-        libero quisquam fugit et ducimus! Est ad labore cupiditate provident
-        inventore!]
-      </p>
-      <ActionButton label="Read More" @click="$router.push('/news/1')" />
+      <h1>{{ item.title }}</h1>
+      <p>{{ item.description }}</p>
+      <ActionButton label="Read More" @click="$router.push(`/news/${id}`)" />
     </div>
   </div>
 </template>
@@ -21,6 +16,7 @@
 import ActionButton from "@/components/atoms/ActionButton.vue";
 
 export default {
+  props: ["item", "id"],
   components: {
     ActionButton,
   },
