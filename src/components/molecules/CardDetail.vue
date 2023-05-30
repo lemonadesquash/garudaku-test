@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.CardItem">
+  <div :class="$style.CardDetail">
     <div
       :class="$style.Image"
       :style="`background-image: url(${'https://i.pinimg.com/736x/c2/2e/0d/c22e0d6839a83d3687eb40ed21749371.jpg'})`"
@@ -7,12 +7,12 @@
     <div :class="$style.Content">
       <h1>[title]</h1>
       <p>
-        [description, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        [content, Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         Soluta, vitae impedit voluptas cum repudiandae dicta ut at eum dolore
         libero quisquam fugit et ducimus! Est ad labore cupiditate provident
         inventore!]
       </p>
-      <ActionButton label="Read More" @click="$router.push('/news/1')" />
+      <ActionButton label="Edit" @click="$router.push('/edit')" />
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss" module>
 @import "@/scss/variables";
-.CardItem {
+.CardDetail {
   border: 1px solid #f0f0f0;
 
   .Image {
