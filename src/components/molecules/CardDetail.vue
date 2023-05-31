@@ -36,6 +36,7 @@ export default {
 @import "@/scss/variables";
 .CardDetail {
   border: 1px solid #f0f0f0;
+  border-radius: 3px;
 
   .Image {
     width: 100%;

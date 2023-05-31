@@ -16,5 +16,6 @@ export default {
   background-color: #333333;
   padding: 0.5rem 1rem;
   color: #ffffff;
+  border-radius: 3px;
 }
 </style>

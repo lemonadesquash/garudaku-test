@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <h1>Astronomy News</h1>
     <NewsList />
   </div>
 </template>
